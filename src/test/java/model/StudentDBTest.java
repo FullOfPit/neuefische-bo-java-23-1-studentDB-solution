@@ -6,6 +6,30 @@ import org.junit.jupiter.api.Assertions;
 public class StudentDBTest {
 
     @Test
+    public void getAllStudents_ReturnsStudentArray_WhenArrayProvidedInConstructor() {
+        //Given
+        Student testStudent = new Student("1", "a", 1, true);
+        Student testStudentTwo = new Student("2", "b", 2, true);
+        Student testStudentThree = new Student("3", "c", 3, false);
+
+        StudentDB testStudentDB = new StudentDB(new Student[]{testStudent, testStudentTwo, testStudentThree});
+        //When
+        Student[] actual = testStudentDB.getAllStudents();
+        //Then
+        Assertions.assertArrayEquals(new Student[]{testStudent, testStudentTwo, testStudentThree}, actual);
+    }
+
+    @Test
+    public void getAllStudents_ReturnsEmptyArray_WhenEmptyConstructor() {
+        //Given
+        StudentDB testStudentDB = new StudentDB();
+        //When
+        Student[] actual = testStudentDB.getAllStudents();
+        //Then
+        Assertions.assertArrayEquals(new Student[]{}, actual);
+    }
+
+    @Test
     public void addStudent_AddsStudentToLastPositionOfIndex_WhenStudentAdded() {
         //Given
         Student testStudent = new Student("1", "a", 1, true);

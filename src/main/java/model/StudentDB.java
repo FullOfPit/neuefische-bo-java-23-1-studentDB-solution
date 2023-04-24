@@ -6,11 +6,16 @@ public class StudentDB {
 
     Student[] students;
 
+    public StudentDB() {
+        this.students = new Student[0];
+    }
+
     public StudentDB(Student[] students) {
         this.students = students;
     }
 
     public Student[] getAllStudents() {
+
         return this.students;
     }
 
